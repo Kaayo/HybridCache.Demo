@@ -24,7 +24,7 @@ public class WeatherForecastController : ControllerBase
     }
 
     [HttpGet("DistributedCache")]
-    public async Task<IEnumerable<WeatherForecast>> GetMemoryCache([FromServices] IDistributedCache distributedCache)
+    public async Task<IEnumerable<WeatherForecast>> GetDistributedCache([FromServices] IDistributedCache distributedCache)
     {
         var forecastsString = await distributedCache.GetStringAsync("WeatherForecast");
         if (!string.IsNullOrWhiteSpace(forecastsString))
@@ -51,7 +51,7 @@ public class WeatherForecastController : ControllerBase
             {
                 Expiration = TimeSpan.FromSeconds(10),
                 LocalCacheExpiration = TimeSpan.FromSeconds(10),
-                //Flags = HybridCacheEntryFlags.DisableLocalCache
+                //Flags = HybridCacheEntryFlags.DisableDistributedCache
             },
             new[] { "tag1", "tag2" });
     }
