@@ -22,8 +22,8 @@ public class Program
             options.MaximumKeyLength = 1024;
             options.DefaultEntryOptions = new HybridCacheEntryOptions
             {
-                Expiration = TimeSpan.FromSeconds(5),
-                LocalCacheExpiration = TimeSpan.FromSeconds(5)
+                Expiration = TimeSpan.FromSeconds(10),
+                LocalCacheExpiration = TimeSpan.FromSeconds(10)
             };
         });
 #pragma warning restore EXTEXP0018

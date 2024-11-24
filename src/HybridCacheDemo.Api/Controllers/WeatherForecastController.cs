@@ -36,7 +36,7 @@ public class WeatherForecastController : ControllerBase
             JsonSerializer.Serialize(forecasts),
             new DistributedCacheEntryOptions
             {
-                AbsoluteExpirationRelativeToNow = TimeSpan.FromSeconds(5)
+                AbsoluteExpirationRelativeToNow = TimeSpan.FromSeconds(10)
             });
 
         return forecasts;
@@ -49,8 +49,8 @@ public class WeatherForecastController : ControllerBase
             cancellationToken => ValueTask.FromResult(GetData()),
             new HybridCacheEntryOptions
             {
-                Expiration = TimeSpan.FromSeconds(5),
-                LocalCacheExpiration = TimeSpan.FromSeconds(5),
+                Expiration = TimeSpan.FromSeconds(10),
+                LocalCacheExpiration = TimeSpan.FromSeconds(10),
                 //Flags = HybridCacheEntryFlags.DisableLocalCache
             },
             new[] { "tag1", "tag2" });
@@ -63,8 +63,8 @@ public class WeatherForecastController : ControllerBase
             GetData(),
             new HybridCacheEntryOptions
             {
-                Expiration = TimeSpan.FromMinutes(5),
-                LocalCacheExpiration = TimeSpan.FromMinutes(5),
+                Expiration = TimeSpan.FromMinutes(10),
+                LocalCacheExpiration = TimeSpan.FromMinutes(10),
             },
             new[] { "tag1", "tag2" });
 
