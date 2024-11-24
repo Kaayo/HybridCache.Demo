@@ -67,9 +67,6 @@ public class WeatherForecastController : ControllerBase
                 LocalCacheExpiration = TimeSpan.FromMinutes(10),
             },
             new[] { "tag1", "tag2" });
-
-        //Remove by tag
-        //await hybridCache.RemoveByTagAsync("tag1");
     }
 
     [HttpGet("Remove_HybridCache")]
